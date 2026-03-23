@@ -1,32 +1,26 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class PalindromeCheckerApp {
 
-    public static void main(String[] args) {
+    private static boolean check(String s, int start, int end) {
+        if (start >= end)
+            return true;
 
-        System.out.println("Palindrome Checker App");
-        System.out.println();
+        if (s.charAt(start) != s.charAt(end))
+            return false;
+
+        return check(s, start + 1, end - 1);
+    }
+
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Input text: ");
-        String text = sc.nextLine();
+        System.out.print("Input: ");
+        String input = sc.nextLine();
 
-        Deque<Character> deque = new LinkedList<>();
+        boolean result = check(input, 0, input.length() - 1);
 
-        for (char c : text.toCharArray()) {
-            deque.add(c);
-        }
-
-        boolean isPalindrome = true;
-
-        while (deque.size() > 1) {
-            if (!deque.removeFirst().equals(deque.removeLast())) {
-                isPalindrome = false;
-                break;
-            }
-        }
-
-        System.out.println("Is it a Palindrome? : " + isPalindrome);
+        System.out.println("Is Palindrome?: " + result);
     }
 }
