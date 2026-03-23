@@ -1,21 +1,26 @@
+import java.util.LinkedList;
 import java.util.Scanner;
 
-public class uc10 {
+public class PalindromeCheckerApp {
 
     public static boolean checkPalindrome(String input) {
+        LinkedList<Character> list = new LinkedList<>();
 
-        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+        // Add characters to linked list
+        for (char c : input.toCharArray()) {
+            list.add(c);
+        }
 
-        for (int i = 0; i < normalized.length() / 2; i++) {
-
-            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i))
+        // Compare first and last
+        while (list.size() > 1) {
+            if (!list.removeFirst().equals(list.removeLast())) {
                 return false;
+            }
         }
         return true;
     }
 
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Input: ");
