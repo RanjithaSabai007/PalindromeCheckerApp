@@ -1,2 +1,2 @@
 # PalindromeCheckerApp
-Use Case 4
+Use Case 7
